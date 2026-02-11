@@ -93,7 +93,9 @@ export default {
                 data[locale.key] = value;
               }
             } else if(this.isRepeater) {
-              formData.append(originalAttribute+ `][${locale.key}`, value);
+                if(formData.has(originalAttribute+ `][${locale.key}`) === false && value !== "null") {
+                  formData.append(originalAttribute+ `][${locale.key}`, value);
+                }
             } else {
               formData.append(key, value);
             }
