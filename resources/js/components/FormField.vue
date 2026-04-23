@@ -92,10 +92,10 @@ export default {
               } else {
                 data[locale.key] = value;
               }
-            } else if(this.isRepeater) {
-                if(formData.has(originalAttribute+ `][${locale.key}`) === false && value !== "null") {
-                  formData.append(originalAttribute+ `][${locale.key}`, value);
-                }
+            } else if (this.isRepeater) {
+              if (formData.has(originalAttribute + `][${locale.key}`) === false && value !== 'null') {
+                formData.append(originalAttribute + `][${locale.key}`, value);
+              }
             } else {
               formData.append(key, value);
             }
@@ -113,7 +113,8 @@ export default {
     errorAttributes() {
       const locales = this.locales;
       const errorAttributes = {};
-      const validationKey = (this.isRepeater && this.nestedValidationKey) ? this.nestedValidationKey : this.currentField.validationKey;
+      const validationKey =
+        this.isRepeater && this.nestedValidationKey ? this.nestedValidationKey : this.currentField.validationKey;
       for (const locale of locales) {
         errorAttributes[locale.key] = `${validationKey}.${locale.key}`;
       }
